@@ -4,23 +4,23 @@ import { SpecialtyDescription } from "./SpecialtyDescription";
 
 export function App() {
 	return (
-		<div className="m-0 flex place-items-center min-w-80 min-h-screen text-white/87 bg-gray-900 max-w-5xl mx-auto p-8">
+		<div className="m-0 mx-auto flex min-h-screen max-w-5xl min-w-80 place-items-center bg-gray-900 p-8 text-white/87">
 			<div className="space-y-8">
 				{specialties.map((x) => (
 					<div
 						key={x.skillCategory}
-						className="border border-gray-700 rounded-lg p-6 bg-gray-800/50"
+						className="rounded-lg border border-gray-700 bg-gray-800/50 p-6"
 					>
-						<div className="text-2xl font-bold mb-4 text-blue-400">
+						<div className="mb-4 text-2xl font-bold text-blue-400">
 							{x.skillCategory}
 						</div>
 						<dl className="space-y-3">
 							{x.specialties.map((y) => (
 								<Fragment key={y.name}>
-									<dt className="font-semibold text-lg text-gray-200">
+									<dt className="text-lg font-semibold text-gray-200">
 										{y.name}
 									</dt>
-									<dd className="ml-4 text-gray-300 mb-3">
+									<dd className="mb-3 ml-4 text-gray-300">
 										<SpecialtyDescription
 											description={y.description}
 											skillName={x.skillCategory}

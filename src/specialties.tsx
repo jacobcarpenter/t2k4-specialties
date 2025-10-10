@@ -16,7 +16,10 @@ export const specialties = [
 	]),
 	createForSkill("Stamina", [
 		["Builder", "+1 to %skill rolls made for base building."],
-		["Load Carrier", "Can carry four more encumberance units in both combat gear and backpack."],
+		[
+			"Load Carrier",
+			"Can carry four more encumberance units in both combat gear and backpack.",
+		],
 		[
 			"NBC",
 			"+1 to %skill for all infection rolls, including those triggered by radiation or chemical agents. You can identify nuclear, biological, and chemical weapon effects to personnel and equipment.",
@@ -87,7 +90,10 @@ export const specialties = [
 		["Scrounger", "+1 to %skill rolls for scrounging."],
 	]),
 	createForSkill("Tech", [
-		["Blacksmith", "+1 to %skill rolls for metalworking, forging, casting, molding, and smelting."],
+		[
+			"Blacksmith",
+			"+1 to %skill rolls for metalworking, forging, casting, molding, and smelting.",
+		],
 		[
 			"Chemist",
 			"+1 to %skill rolls for distilling grain alcohol for fuel. Also lets you identify chemical substances correctly.",
@@ -110,7 +116,10 @@ export const specialties = [
 		],
 		["Gunsmith", "+1 to %skill rolls for repairing firearms."],
 		["Improvised Munitions", "+1 to %skill rolls for making zip-guns and IEDs."],
-		["Locksmith", "+1 to %skill rolls for picking locks, cracking safes, and disarming alarms."],
+		[
+			"Locksmith",
+			"+1 to %skill rolls for picking locks, cracking safes, and disarming alarms.",
+		],
 		["Mechanic", "+1 to %skill rolls for repairing engines, vehicles, generators, and pumps."],
 		[
 			"Scientist",
