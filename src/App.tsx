@@ -11,27 +11,33 @@ const gridNames = Object.freeze({
 export function App() {
 	return (
 		<div className="m-0 mx-auto flex min-h-screen max-w-5xl min-w-80 place-items-center bg-gray-900 p-8 text-white/87">
-			<div className={`grid ${gridNames["grid-cols"]} gap-8`}>
-				{specialties.map((x) => (
-					<div
-						key={x.skillCategory}
-						className={`grid grid-cols-subgrid ${gridNames.row} rounded-lg border border-gray-700 bg-gray-800/50 p-6`}
-					>
-						<div className={`${gridNames.row} mb-4 text-2xl font-bold text-blue-400`}>
-							{x.skillCategory}
+			<div className="rounded-lg border border-gray-700 bg-gray-800/50 p-6">
+				<div className={`grid ${gridNames["grid-cols"]} gap-8`}>
+					{specialties.map((x) => (
+						<div
+							key={x.skillCategory}
+							className={`grid grid-cols-subgrid ${gridNames.row}`}
+						>
+							<div
+								className={`${gridNames.row} mb-4 text-2xl font-bold text-blue-400`}
+							>
+								{x.skillCategory}
+							</div>
+							<dl
+								className={`grid grid-cols-subgrid ${gridNames.row} gap-x-4 gap-y-3`}
+							>
+								{x.specialties.map((y) => (
+									<SpecialtyEntry
+										key={y.name}
+										name={y.name}
+										description={y.description}
+										skillCategory={x.skillCategory}
+									/>
+								))}
+							</dl>
 						</div>
-						<dl className={`grid grid-cols-subgrid ${gridNames.row} gap-x-4 gap-y-3`}>
-							{x.specialties.map((y) => (
-								<SpecialtyEntry
-									key={y.name}
-									name={y.name}
-									description={y.description}
-									skillCategory={x.skillCategory}
-								/>
-							))}
-						</dl>
-					</div>
-				))}
+					))}
+				</div>
 			</div>
 		</div>
 	);
