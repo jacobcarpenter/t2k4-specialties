@@ -4,7 +4,7 @@ import { SpecialtyDescription } from "./SpecialtyDescription";
 
 export function App() {
 	return (
-		<div className="max-w-5xl mx-auto p-8">
+		<div className="m-0 flex place-items-center min-w-80 min-h-screen text-white/87 bg-gray-900 max-w-5xl mx-auto p-8">
 			<div className="space-y-8">
 				{specialties.map((x) => (
 					<div
