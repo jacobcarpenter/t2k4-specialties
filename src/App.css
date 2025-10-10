@@ -2,7 +2,6 @@
 	max-width: 1280px;
 	margin: 0 auto;
 	padding: 2rem;
-	text-align: center;
 }
 
 .logo {
@@ -39,4 +38,13 @@
 
 .read-the-docs {
 	color: #888;
+}
+
+.skill {
+	font-weight: bold;
+	background: linear-gradient(120deg, rgba(100, 108, 255, 0.3) 0%, rgba(97, 218, 251, 0.3) 100%);
+	padding: 0.1em 0.3em;
+	border-radius: 3px;
+	font-variant: small-caps;
+	font-size: 0.8em;
 }
