@@ -17,7 +17,7 @@ export function SpecialtyDescription({ description, skillName }: SpecialtyDescri
 				return (
 					<span
 						key={index}
-						className="font-variant-small-caps rounded bg-gradient-to-r from-blue-500/30 to-cyan-400/30 px-1.5 py-0.5 text-xs font-bold"
+						className="font-variant-small-caps rounded bg-gradient-to-r from-blue-500/30 to-cyan-400/30 px-1.5 py-0.5 text-sm font-bold"
 					>
 						{part.value}
 					</span>
