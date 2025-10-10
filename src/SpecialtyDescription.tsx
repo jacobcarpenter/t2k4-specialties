@@ -15,7 +15,10 @@ export function SpecialtyDescription({ description, skillName }: SpecialtyDescri
 					return <Fragment key={index}>{part}</Fragment>;
 				}
 				return (
-					<span key={index} className="skill">
+					<span
+						key={index}
+						className="font-bold bg-gradient-to-r from-blue-500/30 to-cyan-400/30 px-1.5 py-0.5 rounded text-xs font-variant-small-caps"
+					>
 						{part.value}
 					</span>
 				);
