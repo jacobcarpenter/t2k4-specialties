@@ -1,7 +1,7 @@
 import uFuzzy from "@leeoniya/ufuzzy";
 const uf = new uFuzzy({ interLft: 2 });
 
-export function getFilteredSpecialties(filterText: string) {
+export function getFilteredSpecialties(filterText: string): SpecialtyData {
 	if (!filterText) {
 		return specialties;
 	}
@@ -13,32 +13,30 @@ export function getFilteredSpecialties(filterText: string) {
 	);
 	const titles = flatSpecialties.map((x) => x.name);
 
-	return multiFilter(titles, filterTexts).reduce(
-		(acc, curr) => {
-			const matchedSpecialty = flatSpecialties.at(curr)!;
-			const currentSkillGroup = acc.at(-1);
+	return multiFilter(titles, filterTexts).reduce((acc, curr) => {
+		const matchedSpecialty = flatSpecialties.at(curr)!;
+		const currentSkillGroup = acc.at(-1);
 
-			if (currentSkillGroup?.skillCategory !== matchedSpecialty.skillCategory) {
-				return [
-					...acc,
-					{
-						skillCategory: matchedSpecialty?.skillCategory,
-						specialties: [matchedSpecialty],
-					},
-				];
-			}
-
+		if (currentSkillGroup?.skillCategory !== matchedSpecialty.skillCategory) {
 			return [
-				...acc.slice(0, -1), // preceding skill groups
+				...acc,
 				{
-					...currentSkillGroup,
-					specialties: [...currentSkillGroup.specialties, matchedSpecialty],
+					skillCategory: matchedSpecialty?.skillCategory,
+					specialties: [matchedSpecialty],
 				},
 			];
-		},
-		[] as typeof specialties,
-	);
+		}
 
+		return [
+			...acc.slice(0, -1), // preceding skill groups
+			{
+				...currentSkillGroup,
+				specialties: [...currentSkillGroup.specialties, matchedSpecialty],
+			},
+		];
+	}, [] as SpecialtyData);
+
+	// see https://github.com/leeoniya/uFuzzy/issues/80
 	function multiFilter(haystack: string[], needles: string[]) {
 		return [...new Set(needles.flatMap((needle) => uf.filter(haystack, needle)!))].toSorted(
 			(a, z) => a - z,
@@ -216,6 +214,8 @@ export const specialties = [
 		["Trader", "+1 %skill when negotiating an item‘s price."],
 	]),
 ];
+
+export type SpecialtyData = typeof specialties;
 
 function createForSkill(skillCategory: string, specialties: [name: string, description: string][]) {
 	return {
