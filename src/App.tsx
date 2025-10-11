@@ -17,10 +17,10 @@ export function App() {
 	const specialtiesToShow = getFilteredSpecialties(deferredUserSpecialties);
 
 	return (
-		<div className="min-h-screen bg-gray-900 text-white/87">
+		<div className="min-h-screen bg-gray-900 text-white/87 print:bg-white print:text-black">
 			<div className="m-0 mx-auto flex max-w-5xl min-w-80 place-items-start p-8">
-				<div className="w-full rounded-lg border border-gray-700 bg-gray-800/50 p-6">
-					<div className="mb-6">
+				<div className="w-full rounded-lg border border-gray-700 bg-gray-800/50 p-6 print:border-0 print:bg-transparent print:p-0">
+					<div className="mb-6 print:hidden">
 						<input
 							id="userSpecialties"
 							type="text"
@@ -37,7 +37,7 @@ export function App() {
 								className={`grid grid-cols-subgrid ${gridNames.row}`}
 							>
 								<div
-									className={`${gridNames.row} mb-4 text-2xl font-bold text-blue-400`}
+									className={`${gridNames.row} mb-4 text-2xl font-bold text-blue-400 print:text-black`}
 								>
 									{x.skillCategory}
 								</div>
@@ -73,10 +73,12 @@ function SpecialtyEntry({
 }) {
 	return (
 		<>
-			<dt className={`${gridNames.specialty} text-right text-lg font-semibold text-gray-200`}>
+			<dt
+				className={`${gridNames.specialty} text-right text-lg font-semibold text-gray-200 print:text-black`}
+			>
 				{name}
 			</dt>
-			<dd className={`${gridNames.description} text-lg text-gray-300`}>
+			<dd className={`${gridNames.description} text-lg text-gray-300 print:text-black`}>
 				<SpecialtyDescription description={description} skillName={skillCategory} />
 			</dd>
 		</>
