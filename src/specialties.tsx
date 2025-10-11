@@ -1,5 +1,5 @@
 import uFuzzy from "@leeoniya/ufuzzy";
-const uf = new uFuzzy({ interLft: 2 });
+const uf = new uFuzzy({ intraMode: 1, interLft: 2 });
 
 export function getFilteredSpecialties(filterText: string): SpecialtyData {
 	if (!filterText) {
