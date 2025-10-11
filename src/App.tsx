@@ -1,4 +1,4 @@
-import { useDeferredValue, useState } from "react";
+import { useDeferredValue, useState, ViewTransition } from "react";
 import { getFilteredSpecialties } from "./specialties";
 import { SpecialtiesList } from "./SpecialtiesList";
 
@@ -10,6 +10,27 @@ export function App() {
 
 	return (
 		<div className="flex min-h-screen flex-col bg-white text-black">
+			<ViewTransition>
+				{!!deferredUserSpecialties && (
+					<div className="fixed top-0 right-0 z-50 print:hidden">
+						<svg width="60" height="60" className="overflow-visible">
+							<polygon points="0,0 60,0 60,60" fill="#57534e" />
+							<text
+								x="38"
+								y="24"
+								fill="white"
+								fontSize="10"
+								fontWeight="bold"
+								fontFamily="sans-serif"
+								transform="rotate(45 38 24)"
+								textAnchor="middle"
+							>
+								Print me!
+							</text>
+						</svg>
+					</div>
+				)}
+			</ViewTransition>
 			<div className="flex-grow">
 				<div className="m-0 mx-auto flex max-w-5xl min-w-80 place-items-start p-8">
 					<div className="w-full">
