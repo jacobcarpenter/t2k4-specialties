@@ -1,4 +1,4 @@
-import { useDeferredValue, useState } from "react";
+import { useDeferredValue, useState, ViewTransition } from "react";
 import { SpecialtyDescription } from "./SpecialtyDescription";
 import { getFilteredSpecialties } from "./specialties";
 
@@ -13,7 +13,6 @@ export function App() {
 	const [userSpecialties, setUserSpecialties] = useState("");
 
 	const deferredUserSpecialties = useDeferredValue(userSpecialties);
-
 	const specialtiesToShow = getFilteredSpecialties(deferredUserSpecialties);
 
 	return (
@@ -34,15 +33,15 @@ export function App() {
 						{specialtiesToShow.map((x) => (
 							<div
 								key={x.skillCategory}
-								className={`grid grid-cols-subgrid ${gridNames.row}`}
+								className={`${gridNames.row} grid grid-cols-subgrid`}
 							>
 								<div
 									className={`${gridNames.row} mb-4 text-2xl font-bold text-blue-400 print:text-black`}
 								>
 									{x.skillCategory}
 								</div>
-								<dl
-									className={`grid grid-cols-subgrid ${gridNames.row} gap-x-4 gap-y-3`}
+								<div
+									className={`${gridNames.row} grid grid-cols-subgrid gap-x-4 gap-y-3`}
 								>
 									{x.specialties.map((y) => (
 										<SpecialtyEntry
@@ -52,7 +51,7 @@ export function App() {
 											skillCategory={x.skillCategory}
 										/>
 									))}
-								</dl>
+								</div>
 							</div>
 						))}
 					</div>
@@ -72,15 +71,17 @@ function SpecialtyEntry({
 	skillCategory: string;
 }) {
 	return (
-		<>
-			<dt
-				className={`${gridNames.specialty} text-right text-lg font-semibold text-gray-200 print:text-black`}
-			>
-				{name}
-			</dt>
-			<dd className={`${gridNames.description} text-lg text-gray-300 print:text-black`}>
-				<SpecialtyDescription description={description} skillName={skillCategory} />
-			</dd>
-		</>
+		<ViewTransition>
+			<div className={`${gridNames.row} grid grid-cols-subgrid`}>
+				<div
+					className={`${gridNames.specialty} text-right text-lg font-semibold text-gray-200 print:text-black`}
+				>
+					{name}
+				</div>
+				<div className={`${gridNames.description} text-lg text-gray-300 print:text-black`}>
+					<SpecialtyDescription description={description} skillName={skillCategory} />
+				</div>
+			</div>
+		</ViewTransition>
 	);
 }
