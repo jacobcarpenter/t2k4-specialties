@@ -1,9 +1,6 @@
 import { useDeferredValue, useState } from "react";
-import { specialties } from "./specialties";
 import { SpecialtyDescription } from "./SpecialtyDescription";
-import uFuzzy from "@leeoniya/ufuzzy";
-
-const uf = new uFuzzy();
+import { getFilteredSpecialties } from "./specialties";
 
 const gridNames = Object.freeze({
 	["grid-cols"]: "grid-cols-[[row_specialty]_auto_[description]_1fr_[row-end]]",
@@ -17,37 +14,7 @@ export function App() {
 
 	const deferredUserSpecialties = useDeferredValue(userSpecialties);
 
-	const flatSpecialties = specialties.flatMap((x) =>
-		x.specialties.map((y) => ({ ...y, skillCategory: x.skillCategory })),
-	);
-	const titles = flatSpecialties.map((x) => x.name);
-	const specialtiesToShow = !deferredUserSpecialties
-		? specialties
-		: uf.filter(titles, deferredUserSpecialties)!.reduce(
-				(acc, curr) => {
-					const matchedSpecialty = flatSpecialties.at(curr)!;
-					const currentSkillGroup = acc.at(-1);
-
-					if (currentSkillGroup?.skillCategory !== matchedSpecialty.skillCategory) {
-						return [
-							...acc,
-							{
-								skillCategory: matchedSpecialty?.skillCategory,
-								specialties: [matchedSpecialty],
-							},
-						];
-					}
-
-					return [
-						...acc.slice(0, -1), // preceding skill groups
-						{
-							...currentSkillGroup,
-							specialties: [...currentSkillGroup.specialties, matchedSpecialty],
-						},
-					];
-				},
-				[] as typeof specialties,
-			);
+	const specialtiesToShow = getFilteredSpecialties(deferredUserSpecialties);
 
 	return (
 		<div className="min-h-screen bg-gray-900 text-white/87">

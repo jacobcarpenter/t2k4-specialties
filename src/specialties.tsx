@@ -1,3 +1,47 @@
+import uFuzzy from "@leeoniya/ufuzzy";
+const uf = new uFuzzy();
+
+export function getFilteredSpecialties(filterText: string) {
+	if (!filterText) {
+		return specialties;
+	}
+
+	const filterTexts = filterText.split(/,\s*/).filter((x) => !!x);
+
+	const flatSpecialties = specialties.flatMap((x) =>
+		x.specialties.map((y) => ({ ...y, skillCategory: x.skillCategory })),
+	);
+	const titles = flatSpecialties.map((x) => x.name);
+
+	return [...new Set(filterTexts.flatMap((filterText) => uf.filter(titles, filterText)!))]
+		.toSorted((a, z) => a - z)
+		.reduce(
+			(acc, curr) => {
+				const matchedSpecialty = flatSpecialties.at(curr)!;
+				const currentSkillGroup = acc.at(-1);
+
+				if (currentSkillGroup?.skillCategory !== matchedSpecialty.skillCategory) {
+					return [
+						...acc,
+						{
+							skillCategory: matchedSpecialty?.skillCategory,
+							specialties: [matchedSpecialty],
+						},
+					];
+				}
+
+				return [
+					...acc.slice(0, -1), // preceding skill groups
+					{
+						...currentSkillGroup,
+						specialties: [...currentSkillGroup.specialties, matchedSpecialty],
+					},
+				];
+			},
+			[] as typeof specialties,
+		);
+}
+
 export const specialties = [
 	createForSkill("Close Combat", [
 		["Brawler", "+1 %skill in unarmed close combat."],
