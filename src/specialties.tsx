@@ -13,33 +13,37 @@ export function getFilteredSpecialties(filterText: string) {
 	);
 	const titles = flatSpecialties.map((x) => x.name);
 
-	return [...new Set(filterTexts.flatMap((filterText) => uf.filter(titles, filterText)!))]
-		.toSorted((a, z) => a - z)
-		.reduce(
-			(acc, curr) => {
-				const matchedSpecialty = flatSpecialties.at(curr)!;
-				const currentSkillGroup = acc.at(-1);
+	return multiFilter(titles, filterTexts).reduce(
+		(acc, curr) => {
+			const matchedSpecialty = flatSpecialties.at(curr)!;
+			const currentSkillGroup = acc.at(-1);
 
-				if (currentSkillGroup?.skillCategory !== matchedSpecialty.skillCategory) {
-					return [
-						...acc,
-						{
-							skillCategory: matchedSpecialty?.skillCategory,
-							specialties: [matchedSpecialty],
-						},
-					];
-				}
-
+			if (currentSkillGroup?.skillCategory !== matchedSpecialty.skillCategory) {
 				return [
-					...acc.slice(0, -1), // preceding skill groups
+					...acc,
 					{
-						...currentSkillGroup,
-						specialties: [...currentSkillGroup.specialties, matchedSpecialty],
+						skillCategory: matchedSpecialty?.skillCategory,
+						specialties: [matchedSpecialty],
 					},
 				];
-			},
-			[] as typeof specialties,
+			}
+
+			return [
+				...acc.slice(0, -1), // preceding skill groups
+				{
+					...currentSkillGroup,
+					specialties: [...currentSkillGroup.specialties, matchedSpecialty],
+				},
+			];
+		},
+		[] as typeof specialties,
+	);
+
+	function multiFilter(haystack: string[], needles: string[]) {
+		return [...new Set(needles.flatMap((needle) => uf.filter(haystack, needle)!))].toSorted(
+			(a, z) => a - z,
 		);
+	}
 }
 
 export const specialties = [
@@ -216,6 +220,9 @@ export const specialties = [
 function createForSkill(skillCategory: string, specialties: [name: string, description: string][]) {
 	return {
 		skillCategory,
-		specialties: specialties.map(([name, description]) => ({ name, description })),
+		specialties: specialties.map(([name, description]) => ({
+			name,
+			description,
+		})),
 	};
 }
