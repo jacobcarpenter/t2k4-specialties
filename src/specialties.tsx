@@ -109,11 +109,20 @@ export const specialties = [
 		["Rifleman", "+1 %skill firing assault rifles, carbines, submachine guns, and shotguns."],
 		["Sidearms", "+1 %skill firing revolvers and pistols."],
 		["Sniper", "+1 %skill firing a sniper or hunting rifle."],
+		[
+			"Close Quarters Specialist",
+			"The penalty for shooting in close combat (p. 63) is reduced by one step.",
+			source.urbanOperations,
+		],
 	]),
 	createForSkill("Recon", [
 		[
 			"Combat Awareness",
 			"When drawing initiative (p. 54), you may draw two and choose one to use.",
+		],
+		[
+			"Combat Engineer",
+			"+1 to %skill(Tech) rolls for placing and disarming mines and explosive devices, and to %skill rolls to avoid mines.",
 		],
 		["Forward Observer", "Your %skill counts as one step higher when directing indirect fire."],
 		[
@@ -130,6 +139,11 @@ export const specialties = [
 			"Roll %skill when you spend a stretch or more investigating the scene of a crime or a battle. On success, the Referee tells you some useful information about what has happened and when.",
 		],
 		["Scout", "+1 %skill for spotting others and avoiding ambushes."],
+		[
+			"Thief",
+			"+1 to %skill rolls when picking pockets and %skill(Tech) rolls when picking locks.",
+			source.urbanOperations,
+		],
 	]),
 	createForSkill("Survival", [
 		[
