@@ -44,6 +44,10 @@ export function getFilteredSpecialties(filterText: string): SpecialtyData {
 	}
 }
 
+const source = {
+	urbanOperations: "Urban Operations",
+};
+
 export const specialties = [
 	createForSkill("Close Combat", [
 		["Brawler", "+1 %skill in unarmed close combat."],
@@ -53,6 +57,11 @@ export const specialties = [
 			"Can kill an incapacitated person outright without suffering negative effects (p. 73).",
 		],
 		["Martial Artist", "Unarmed %skill attacks have a crit threshold of 3 instead of 4."],
+		[
+			"Close Quarters Specialist",
+			"The penalty for shooting in close combat (p. 63) is reduced by one step.",
+			source.urbanOperations,
+		],
 	]),
 	createForSkill("Heavy Weapons", [
 		["Machinegunner", "+1 to %skill rolls for firing all types of machine guns."],
@@ -171,6 +180,16 @@ export const specialties = [
 			"Scientist",
 			"Roll %skill when you come across a phenomenon of any sort that requires knowledge of physics, biology, geology, or any other natural science. On success, the Referee must give you some useful information about it.",
 		],
+		[
+			"Cryptographer",
+			"+1 to %skill for breaking or creating encrypted messages and codes.",
+			source.urbanOperations,
+		],
+		[
+			"Thief",
+			"+1 to %skill(Recon) rolls when picking pockets and %skill rolls when picking locks.",
+			source.urbanOperations,
+		],
 	]),
 	createForSkill("Command", [
 		[
@@ -184,6 +203,11 @@ export const specialties = [
 		[
 			"Tactician",
 			"Roll %skill when you spot an enemy force. On success, the Referee must tell you something useful about their current organization and objectives.",
+		],
+		[
+			"Authority",
+			"You can roll %skill to calm down a rowdy crowd. This specialty cannot be used on hostile enemies.",
+			source.urbanOperations,
 		],
 	]),
 	createForSkill("Medical Aid", [
@@ -212,17 +236,22 @@ export const specialties = [
 		["Psy Ops", "+1 %skill for changing someone‘s mind about a particular issue."],
 		["Teacher", "+1 to %skill rolls for teaching someone a specialty."],
 		["Trader", "+1 %skill when negotiating an item‘s price."],
+		["Liar", "+1 to %skill when lying to someone.", source.urbanOperations],
 	]),
 ];
 
 export type SpecialtyData = typeof specialties;
 
-function createForSkill(skillCategory: string, specialties: [name: string, description: string][]) {
+function createForSkill(
+	skillCategory: string,
+	specialties: [name: string, description: string, source?: string][],
+) {
 	return {
 		skillCategory,
-		specialties: specialties.map(([name, description]) => ({
+		specialties: specialties.map(([name, description, source]) => ({
 			name,
 			description,
+			source,
 		})),
 	};
 }

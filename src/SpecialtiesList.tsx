@@ -29,6 +29,7 @@ export function SpecialtiesList({ specialties }: { specialties: SpecialtyData })
 									key={y.name}
 									name={y.name}
 									description={y.description}
+									source={y.source}
 									skillCategory={x.skillCategory}
 								/>
 							))}
@@ -43,10 +44,12 @@ export function SpecialtiesList({ specialties }: { specialties: SpecialtyData })
 function SpecialtyEntry({
 	name,
 	description,
+	source,
 	skillCategory,
 }: {
 	name: string;
 	description: string;
+	source?: string;
 	skillCategory: string;
 }) {
 	return (
@@ -57,6 +60,7 @@ function SpecialtyEntry({
 				</div>
 				<div className={`${gridNames.description} text-black`}>
 					<SpecialtyDescription description={description} skillName={skillCategory} />
+					{source && <span className="text-sm text-stone-500">{` [${source}]`}</span>}
 				</div>
 			</div>
 		</ViewTransition>
