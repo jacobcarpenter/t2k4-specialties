@@ -11,25 +11,32 @@ const gridNames = Object.freeze({
 
 export function SpecialtiesList({ specialties }: { specialties: SpecialtyData }) {
 	return (
-		<div className={`grid ${gridNames["grid-cols"]} gap-8`}>
-			{specialties.map((x) => (
-				<div key={x.skillCategory} className={`${gridNames.row} grid grid-cols-subgrid`}>
-					<div className={`${gridNames.row} mb-4 text-lg font-bold text-black uppercase`}>
-						{x.skillCategory}
+		<ViewTransition>
+			<div className={`grid ${gridNames["grid-cols"]} gap-8`}>
+				{specialties.map((x) => (
+					<div
+						key={x.skillCategory}
+						className={`${gridNames.row} grid grid-cols-subgrid`}
+					>
+						<div
+							className={`${gridNames.row} mb-4 text-lg font-bold text-black uppercase`}
+						>
+							{x.skillCategory}
+						</div>
+						<div className={`${gridNames.row} grid grid-cols-subgrid gap-x-4 gap-y-3`}>
+							{x.specialties.map((y) => (
+								<SpecialtyEntry
+									key={y.name}
+									name={y.name}
+									description={y.description}
+									skillCategory={x.skillCategory}
+								/>
+							))}
+						</div>
 					</div>
-					<div className={`${gridNames.row} grid grid-cols-subgrid gap-x-4 gap-y-3`}>
-						{x.specialties.map((y) => (
-							<SpecialtyEntry
-								key={y.name}
-								name={y.name}
-								description={y.description}
-								skillCategory={x.skillCategory}
-							/>
-						))}
-					</div>
-				</div>
-			))}
-		</div>
+				))}
+			</div>
+		</ViewTransition>
 	);
 }
 

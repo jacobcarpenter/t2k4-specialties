@@ -11,7 +11,7 @@ export function App() {
 	return (
 		<div className="flex min-h-screen flex-col bg-white text-black">
 			{!!deferredUserSpecialties && (
-				<ViewTransition enter="slide-in" exit="slide-out">
+				<ViewTransition enter="corner-slide-in-out" exit="corner-slide-in-out">
 					<div className="fixed top-0 right-0 z-50 print:hidden">
 						<svg width="60" height="60" className="overflow-visible">
 							<polygon points="0,0 60,0 60,60" fill="#57534e" />
