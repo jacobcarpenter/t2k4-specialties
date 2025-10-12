@@ -1,12 +1,14 @@
 # Twilight: 2000 Specialties Reference Tool
 
-A tool for creating supplemental character reference sheets for Specialties in [Twilight: 2000](https://freeleaguepublishing.com/games/twilight-2000/).
+A small tool for generating printable supplemental character reference sheets for Specialties in [Twilight: 2000](https://freeleaguepublishing.com/games/twilight-2000/).
 
 ## About
 
-This tool helps players quickly generate supplemental reference sheets for character Specialties in Twilight: 2000 4th Edition. Specialties are character-specific skills and abilities that help define your survivor.
+This tool helps players quickly create supplemental reference sheets for character Specialties in Twilight: 2000 (4th Edition). Specialties are character-specific skills and abilities that help define your survivor.
 
-These reference sheets are intended to be printed. Simply Ctrl/Cmd-P in your browser to get a properly formatted sheet for printing.
+These reference sheets are intended for printing. Use your browser's Print command (Ctrl/Cmd+P) to produce a properly formatted sheet.
+
+**Note:** Specialty descriptions are slightly reworded from the Player's Manual for clarity; they retain the original meaning. If you spot any issues or have suggested improvements, please open an issue.
 
 ## Getting Started
 
@@ -31,12 +33,12 @@ npm run dev
 npm run build
 
 # Preview the production build
-npm preview
+npm run preview
 ```
 
 ## About Twilight: 2000
 
-Twilight: 2000 is a roleplaying game where players take on the roles of survivors in the aftermath of World War III. Set in a year 2000 devastated by war in an alternate timeline where the Soviet Union never collapsed, players must survive, find their way home, and perhaps make the world a little bit better again.
+Twilight: 2000 is a roleplaying game in which players take on the roles of survivors after World War III. Set in an alternate timeline where the Soviet Union never collapsed, the year 2000 has been devastated by war. Players must survive, find their way home, and maybe make the world better again.
 
 Learn more at [Free League Publishing](https://freeleaguepublishing.com/games/twilight-2000/).
 
