@@ -10,8 +10,8 @@ export function App() {
 
 	return (
 		<div className="flex min-h-screen flex-col bg-white text-black">
-			<ViewTransition>
-				{!!deferredUserSpecialties && (
+			{!!deferredUserSpecialties && (
+				<ViewTransition enter="slide-in" exit="slide-out">
 					<div className="fixed top-0 right-0 z-50 print:hidden">
 						<svg width="60" height="60" className="overflow-visible">
 							<polygon points="0,0 60,0 60,60" fill="#57534e" />
@@ -29,8 +29,8 @@ export function App() {
 							</text>
 						</svg>
 					</div>
-				)}
-			</ViewTransition>
+				</ViewTransition>
+			)}
 			<div className="flex-grow">
 				<div className="m-0 mx-auto flex max-w-5xl min-w-80 place-items-start p-8">
 					<div className="w-full">

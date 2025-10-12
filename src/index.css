@@ -8,3 +8,45 @@ html {
 @theme {
 	--default-font-family: "Averia Libre", monospace;
 }
+
+::view-transition-old(.slide-in) {
+	animation-name: slideInFromTopRight;
+	animation-duration: 200ms;
+	animation-timing-function: ease-in-out;
+}
+
+::view-transition-new(.slide-in) {
+	animation-name: slideInFromTopRight;
+	animation-duration: 200ms;
+	animation-timing-function: ease-in-out;
+}
+
+::view-transition-old(.slide-out) {
+	animation-name: slideOutToTopRight;
+	animation-duration: 200ms;
+	animation-timing-function: ease-in-out;
+}
+
+::view-transition-new(.slide-out) {
+	animation-name: slideInFromTopRight;
+	animation-duration: 200ms;
+	animation-timing-function: ease-in-out;
+}
+
+@keyframes slideOutToTopRight {
+	from {
+		transform: translate(0, 0);
+	}
+	to {
+		transform: translate(100%, -100%);
+	}
+}
+
+@keyframes slideInFromTopRight {
+	from {
+		transform: translate(100%, -100%);
+	}
+	to {
+		transform: translate(0, 0);
+	}
+}
