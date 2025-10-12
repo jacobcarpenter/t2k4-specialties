@@ -5,6 +5,12 @@
 	--default-font-family: "Averia Libre", monospace;
 }
 
+@media print {
+	html {
+		font-size: 12px;
+	}
+}
+
 @keyframes slideOutToTopRight {
 	from {
 		transform: translate(0, 0);
