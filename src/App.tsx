@@ -9,7 +9,7 @@ export function App() {
 	const specialtiesToShow = getFilteredSpecialties(deferredUserSpecialties);
 
 	return (
-		<div className="flex min-h-screen flex-col bg-white text-black">
+		<div className="flex min-h-dvh flex-col bg-white text-black">
 			{!!deferredUserSpecialties && (
 				<ViewTransition enter="corner-slide-in-out" exit="corner-slide-in-out">
 					<div className="fixed top-0 right-0 z-50 print:hidden">
