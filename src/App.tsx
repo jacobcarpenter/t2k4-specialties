@@ -65,10 +65,20 @@ export function App() {
 						is used with permission under the Community Content Agreement for Free
 						League Workshop.
 					</p>
-					<p>
+					<p className="mb-2">
 						All other original material in this work is copyright{" "}
 						{new Date().getFullYear()} by Jacob Carpenter and published under the
 						Community Content Agreement for Free League Workshop.
+					</p>
+					<p>
+						<a
+							href="https://github.com/jacobcarpenter/t2k4-specialties"
+							target="_blank"
+							rel="noopener noreferrer"
+							className="transition-all hover:text-stone-700 hover:text-shadow-[0_0_8px_rgb(0_0_0_/_0.3)]"
+						>
+							Source on GitHub
+						</a>
 					</p>
 				</div>
 			</footer>
