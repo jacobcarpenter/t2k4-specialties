@@ -10,6 +10,15 @@ const config = {
 	printWidth: 100,
 	plugins: ["prettier-plugin-tailwindcss"],
 	tailwindStylesheet: "./src/index.css",
+	overrides: [
+		{
+			files: ["*.yaml", "*.yml"],
+			options: {
+				useTabs: false,
+				tabWidth: 2,
+			},
+		},
+	],
 };
 
 export default config;
