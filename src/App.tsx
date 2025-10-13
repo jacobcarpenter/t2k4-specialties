@@ -14,7 +14,11 @@ export function App() {
 				<div className="relative m-0 mx-auto flex max-w-5xl min-w-80 place-items-start p-8">
 					{!!deferredUserSpecialties && (
 						<ViewTransition enter="corner-slide-in-out" exit="corner-slide-in-out">
-							<div className="absolute top-0 right-8 z-50 print:hidden">
+							<button
+								onClick={() => window.print()}
+								className="absolute top-0 right-8 z-50 cursor-pointer transition-opacity hover:opacity-80 print:hidden"
+								aria-label="Print page"
+							>
 								<svg width="80" height="40" className="overflow-visible">
 									<polygon points="0,0 80,0 80,40" fill="#57534e" />
 									<text
@@ -30,7 +34,7 @@ export function App() {
 										Print me!
 									</text>
 								</svg>
-							</div>
+							</button>
 						</ViewTransition>
 					)}
 					<div className="w-full">
