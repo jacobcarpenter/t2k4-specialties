@@ -53,7 +53,7 @@ function SpecialtyEntry({
 	skillCategory: string;
 }) {
 	return (
-		<ViewTransition name={`specialty-${name}`}>
+		<ViewTransition name={`skill-${skillCategory}-specialty-${name}`}>
 			<div className={`${gridNames.row} grid grid-cols-subgrid`}>
 				<div className={`${gridNames.specialty} text-right font-semibold text-black`}>
 					{name}
