@@ -38,9 +38,9 @@ export function getFilteredSpecialties(filterText: string): SpecialtyData {
 
 	// see https://github.com/leeoniya/uFuzzy/issues/80
 	function multiFilter(haystack: string[], needles: string[]) {
-		return [...new Set(needles.flatMap((needle) => uf.filter(haystack, needle)!))].toSorted(
-			(a, z) => a - z,
-		);
+		return [
+			...new Set(needles.flatMap((needle) => uf.filter(haystack, needle) ?? [])),
+		].toSorted((a, z) => a - z);
 	}
 }
 
