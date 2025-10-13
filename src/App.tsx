@@ -10,29 +10,29 @@ export function App() {
 
 	return (
 		<div className="flex min-h-dvh flex-col bg-white text-black">
-			{!!deferredUserSpecialties && (
-				<ViewTransition enter="corner-slide-in-out" exit="corner-slide-in-out">
-					<div className="fixed top-0 right-0 z-50 print:hidden">
-						<svg width="60" height="60" className="overflow-visible">
-							<polygon points="0,0 60,0 60,60" fill="#57534e" />
-							<text
-								x="38"
-								y="24"
-								fill="white"
-								fontSize="10"
-								fontWeight="bold"
-								fontFamily="sans-serif"
-								transform="rotate(45 38 24)"
-								textAnchor="middle"
-							>
-								Print me!
-							</text>
-						</svg>
-					</div>
-				</ViewTransition>
-			)}
 			<div className="flex-grow">
-				<div className="m-0 mx-auto flex max-w-5xl min-w-80 place-items-start p-8">
+				<div className="relative m-0 mx-auto flex max-w-5xl min-w-80 place-items-start p-8">
+					{!!deferredUserSpecialties && (
+						<ViewTransition enter="corner-slide-in-out" exit="corner-slide-in-out">
+							<div className="absolute top-0 right-8 z-50 print:hidden">
+								<svg width="80" height="40" className="overflow-visible">
+									<polygon points="0,0 80,0 80,40" fill="#57534e" />
+									<text
+										x="52"
+										y="16"
+										fill="white"
+										fontSize="10"
+										fontWeight="bold"
+										fontFamily="sans-serif"
+										transform="rotate(26.565 52 16)"
+										textAnchor="middle"
+									>
+										Print me!
+									</text>
+								</svg>
+							</div>
+						</ViewTransition>
+					)}
 					<div className="w-full">
 						<header className="mb-6 print:hidden">
 							<h1 className="text-2xl font-bold text-black">
