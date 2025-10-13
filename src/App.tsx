@@ -49,6 +49,7 @@ export function App() {
 								onChange={(e) => setUserSpecialties(e.target.value)}
 								className="w-full rounded border border-gray-400 bg-white px-3 py-2 text-black placeholder-gray-500 focus:border-gray-600 focus:outline-none"
 								placeholder="Locksmith, Electrician, Brawler, etc…"
+								spellCheck={false}
 							/>
 						</div>
 
