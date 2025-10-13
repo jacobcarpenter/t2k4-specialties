@@ -39,7 +39,19 @@ export function getFilteredSpecialties(filterText: string): SpecialtyData {
 	// see https://github.com/leeoniya/uFuzzy/issues/80
 	function multiFilter(haystack: string[], needles: string[]) {
 		return [
-			...new Set(needles.flatMap((needle) => uf.filter(haystack, needle) ?? [])),
+			...new Set(
+				needles.flatMap((needle) => {
+					const filterResult = uf.filter(haystack, needle) ?? [];
+					if (!filterResult.length) {
+						return [];
+					}
+
+					// require matches to anchor to the beginning of the haystack term
+					// "quart" -> ❌ "Close Quarters Combat" ✅ "Quartermaster"
+					const info = uf.info(filterResult, haystack, needle);
+					return info.idx.filter((_, index) => info.start[index] === 0);
+				}),
+			),
 		].toSorted((a, z) => a - z);
 	}
 }
