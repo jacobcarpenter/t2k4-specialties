@@ -1,6 +1,6 @@
 import { useDeferredValue, useState, ViewTransition } from "react";
-import { getFilteredSpecialties } from "./specialties";
 import { SpecialtiesList } from "./SpecialtiesList";
+import { getFilteredSpecialties } from "./specialties";
 
 export function App() {
 	const [userSpecialties, setUserSpecialties] = useState("");
@@ -44,7 +44,6 @@ export function App() {
 						</header>
 						<div className="mb-6 print:hidden">
 							<input
-								id="userSpecialties"
 								type="text"
 								value={userSpecialties}
 								onChange={(e) => setUserSpecialties(e.target.value)}

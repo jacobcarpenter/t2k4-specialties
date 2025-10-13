@@ -18,9 +18,7 @@ export function SpecialtiesList({ specialties }: { specialties: SpecialtyData })
 						key={x.skillCategory}
 						className={`${gridNames.row} grid grid-cols-subgrid`}
 					>
-						<div
-							className={`${gridNames.row} mb-4 text-lg font-bold text-black uppercase`}
-						>
+						<div className={`${gridNames.row} mb-4 text-lg font-bold uppercase`}>
 							{x.skillCategory}
 						</div>
 						<div className={`${gridNames.row} grid grid-cols-subgrid gap-x-4 gap-y-3`}>
@@ -55,10 +53,8 @@ function SpecialtyEntry({
 	return (
 		<ViewTransition name={`skill-${skillCategory}-specialty-${name}`}>
 			<div className={`${gridNames.row} grid grid-cols-subgrid`}>
-				<div className={`${gridNames.specialty} text-right font-semibold text-black`}>
-					{name}
-				</div>
-				<div className={`${gridNames.description} text-black`}>
+				<div className={`${gridNames.specialty} text-right font-semibold`}>{name}</div>
+				<div className={`${gridNames.description}`}>
 					<SpecialtyDescription description={description} skillName={skillCategory} />
 					{source && <span className="text-sm text-stone-500">{` [${source}]`}</span>}
 				</div>
