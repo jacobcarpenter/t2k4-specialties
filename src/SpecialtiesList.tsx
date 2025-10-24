@@ -3,7 +3,7 @@ import { SpecialtyDescription } from "./SpecialtyDescription";
 import { type SpecialtyData } from "./specialties";
 
 const gridNames = Object.freeze({
-	["grid-cols"]: "grid-cols-[[row_specialty]_auto_[description]_1fr_[row-end]]",
+	["grid-cols"]: "grid-cols-[[row_specialty]_minmax(auto,1fr)_[description]_1fr_[row-end]]",
 	row: "col-[row]",
 	specialty: "col-[specialty]",
 	description: "col-[description]",
