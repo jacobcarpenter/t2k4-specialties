@@ -41,8 +41,8 @@ export function getFilteredSpecialties(filterText: string): SpecialtyData {
 		return [
 			...new Set(
 				needles.flatMap((needle) => {
-					const filterResult = uf.filter(haystack, needle) ?? [];
-					if (!filterResult.length) {
+					const filterResult = uf.filter(haystack, needle);
+					if (!filterResult?.length) {
 						return [];
 					}
 
