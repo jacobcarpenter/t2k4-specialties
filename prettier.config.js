@@ -1,5 +1,3 @@
-// prettier.config.js, .prettierrc.js, prettier.config.mjs, or .prettierrc.mjs
-
 /**
  * @see https://prettier.io/docs/configuration
  * @type {import("prettier").Config & import("prettier-plugin-tailwindcss").PluginOptions}
@@ -12,7 +10,7 @@ const config = {
 	tailwindStylesheet: "./src/index.css",
 	overrides: [
 		{
-			files: ["*.yaml", "*.yml"],
+			files: ["*.y?(a)ml"],
 			options: {
 				useTabs: false,
 				tabWidth: 2,
