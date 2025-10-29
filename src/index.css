@@ -29,12 +29,24 @@ html {
 	}
 }
 
-@keyframes slideOutToTopRight {
-	from {
-		transform: translateY(0);
-	}
-	to {
-		transform: translateY(-100%);
+@layer components {
+	.search-cancel {
+		&::-webkit-search-cancel-button {
+			-webkit-appearance: none;
+			appearance: none;
+			cursor: pointer;
+			height: 1rem;
+			width: 1rem;
+			background-size: 1rem 1rem;
+			background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="%23666666" stroke-width="2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>');
+			transition:
+				opacity 0.2s,
+				background-image 0.2s;
+		}
+		&::-webkit-search-cancel-button:hover {
+			opacity: 0.8;
+			background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="%23333333" stroke-width="3" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>');
+		}
 	}
 }
 
@@ -44,6 +56,15 @@ html {
 	}
 	to {
 		transform: translateY(0);
+	}
+}
+
+@keyframes slideOutToTopRight {
+	from {
+		transform: translateY(0);
+	}
+	to {
+		transform: translateY(-100%);
 	}
 }
 
