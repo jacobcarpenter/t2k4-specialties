@@ -10,7 +10,7 @@ export function App() {
 
 	return (
 		<div className="flex min-h-dvh flex-col bg-white text-black">
-			<div className="flex-grow">
+			<div className="grow">
 				<div className="relative m-0 mx-auto flex max-w-5xl min-w-80 place-items-start p-8">
 					{!!deferredUserSpecialties && (
 						<ViewTransition enter="corner-slide-in-out" exit="corner-slide-in-out">
@@ -79,7 +79,7 @@ export function App() {
 							href="https://github.com/jacobcarpenter/t2k4-specialties"
 							target="_blank"
 							rel="noopener noreferrer"
-							className="transition-all hover:text-stone-700 hover:text-shadow-[0_0_8px_rgb(0_0_0_/_0.3)]"
+							className="transition-all hover:text-stone-700 hover:text-shadow-[0_0_8px_rgb(0_0_0/0.3)]"
 						>
 							Source on GitHub
 						</a>
