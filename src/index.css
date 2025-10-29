@@ -7,24 +7,20 @@
 
 html {
 	scrollbar-gutter: stable;
-}
+	scrollbar-color: #888 white; /* for Firefox */
 
-html::-webkit-scrollbar-track {
-	background: white;
-}
+	&::-webkit-scrollbar-track {
+		background: white;
+	}
 
-html::-webkit-scrollbar-thumb {
-	background: #888;
-	border-radius: 4px;
-}
+	&::-webkit-scrollbar-thumb {
+		background: #888;
+		border-radius: 4px;
 
-html::-webkit-scrollbar-thumb:hover {
-	background: #555;
-}
-
-/* For Firefox */
-html {
-	scrollbar-color: #888 white;
+		&:hover {
+			background: #555;
+		}
+	}
 }
 
 @media print {
