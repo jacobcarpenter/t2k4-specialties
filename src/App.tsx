@@ -19,21 +19,7 @@ export function App() {
 								className="absolute top-0 right-8 z-50 cursor-pointer transition-opacity hover:opacity-80 print:hidden"
 								aria-label="Print page"
 							>
-								<svg width="80" height="40" className="overflow-visible">
-									<polygon points="0,0 80,0 80,40" fill="#57534e" />
-									<text
-										x="52"
-										y="16"
-										fill="white"
-										fontSize="10"
-										fontWeight="bold"
-										fontFamily="sans-serif"
-										transform="rotate(26.565 52 16)"
-										textAnchor="middle"
-									>
-										Print me!
-									</text>
-								</svg>
+								<PrintMeIcon />
 							</button>
 						</ViewTransition>
 					)}
@@ -87,5 +73,25 @@ export function App() {
 				</div>
 			</footer>
 		</div>
+	);
+}
+
+function PrintMeIcon() {
+	return (
+		<svg width="80" height="40" className="overflow-visible">
+			<polygon points="0,0 80,0 80,40" fill="#57534e" />
+			<text
+				x="52"
+				y="16"
+				fill="white"
+				fontSize="10"
+				fontWeight="bold"
+				fontFamily="sans-serif"
+				transform="rotate(26.565 52 16)"
+				textAnchor="middle"
+			>
+				Print me!
+			</text>
+		</svg>
 	);
 }
